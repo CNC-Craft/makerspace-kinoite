@@ -1,5 +1,5 @@
 ublue_variants:
-  - label: ublue-os/startingpoint
+  - label: CNC-Craft/makerspace-kinoite
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: startingpoint
+      - label: makerspace-kinoite

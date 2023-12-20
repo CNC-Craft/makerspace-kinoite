@@ -1,10 +1,10 @@
 # image will be published to ghcr.io/<user>/<name>
-name: startingpoint
+name: makerspace-kinoite
 # description will be included in the image's metadata
-description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
+description: An opinionated version of Kinoite aimed at Makerspaces
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/kinoite-main
 image-version: 39 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -20,15 +20,55 @@ modules:
                   # should be added into /usr/etc/ as that is the proper "distro"
                   # config directory on ostree. Read more in the files module's README
 
+  - type: default-flatpaks
+    system:
+      # If no repo information is specified, Flathub will be used by default
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+      install:
+        - org.inkscape.Inkscape
+        - org.blender.Blender
+        - org.freecadweb.FreeCAD
+        - org.librecad.librecad
+        - org.openscad.OpenSCAD
+        - com.prusa3d.PrusaSlicer
+        - com.vscodium.codium
+        - cc.arduino.IDE2
+        - org.raspberrypi.rpi-imager
+        - org.winehq.wine
+        - org.videolan.VLC
+        - org.kde.okular
+        - org.kde.gwenview
+        - org.mozilla.firefox
+        - org.fedoraproject.MediaWriter
+      # remove:
+      #   - org.gnome.eog
+    # A flatpak repo can also be added without having to install flatpaks,
+    # as long as one of the repo- fields is present
+    user:
+      repo-name: flathub
+
   - type: rpm-ostree
     repos:
       # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
       # - micro
       # - starship
+      - mesa-libGLU #Required by SheetCAM
+      - webkit2gtk4.0 #Required by OrcaSlicer
+      # - wine-core
+      # - wine-core.i686
+      # - wine-ldap
+      # - wine-mono
+      - patch
+      - cabextract
     remove:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+      - kwrite
+      - kmousetool
+      - plasma-welcome
 
   - type: bling # configure what to pull in from ublue-os/bling
     install:
@@ -42,7 +82,7 @@ modules:
       # - devpod # https://devpod.sh/ as an rpm
       # - gnome-vrr # enables gnome-vrr for your image
       # - container-tools # installs container-related tools onto /usr/bin: kind, kubectx, docker-compose and kubens
-      # - laptop # installs TLP and configures your system for laptop usage
+      - laptop # installs TLP and configures your system for laptop usage
       # - flatpaksync # allows synchronization of user-installed flatpaks, see separate documentation section
 
 
@@ -54,5 +94,14 @@ modules:
 
   - type: script
     scripts:
+      # # Gets the latest plugins
+      # - orcaslicer.sh
+      # - nextcloud.sh
+      # - openbuildscontrol.sh
+      # - stlthumb.sh
+      # - flathub.sh
+      # - inkscape.sh
+      # - lightburn.sh
+      # - sheetcam.sh
       # this sets up the proper policy & signing files for signed images to work
       - signing.sh

@@ -94,12 +94,11 @@ modules:
 
   - type: script
     scripts:
-      # # Gets the latest plugins
+      # # Gets the latest applications and plugins
       - orcaslicer.sh
       - nextcloud.sh
       - openbuildscontrol.sh
       - stlthumb.sh
-      - flathub.sh
       - inkscape.sh
       - lightburn.sh
       - sheetcam.sh

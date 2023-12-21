@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=STM32CubeProgrammer
+Name[en]=STM32CubeProgrammer
+Comment=STM32CubeProgrammer
+Comment[en]=STM32CubeProgrammer
+Exec=/usr/share/STMicroelectronics/STM32CubeProgrammer/bin/STM32CubeProgrammer
+Icon=/usr/share/STMicroelectronics/STM32CubeProgrammer/util/Programmer.ico
+Path=/usr/share/STMicroelectronics/STM32CubeProgrammer/bin
+Categories=Development;

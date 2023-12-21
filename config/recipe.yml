@@ -95,13 +95,13 @@ modules:
   - type: script
     scripts:
       # # Gets the latest plugins
-      # - orcaslicer.sh
-      # - nextcloud.sh
-      # - openbuildscontrol.sh
-      # - stlthumb.sh
-      # - flathub.sh
-      # - inkscape.sh
-      # - lightburn.sh
-      # - sheetcam.sh
+      - orcaslicer.sh
+      - nextcloud.sh
+      - openbuildscontrol.sh
+      - stlthumb.sh
+      - flathub.sh
+      - inkscape.sh
+      - lightburn.sh
+      - sheetcam.sh
       # this sets up the proper policy & signing files for signed images to work
       - signing.sh

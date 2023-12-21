@@ -4,9 +4,9 @@ rules:                           # Array of rules
     upstream: ublue-os:template  # Required. Must be in the same fork network.
     mergeMethod: hardreset       # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
     mergeUnstable: false
-  - base: live
-    upstream: template
-    mergeMethod: merge
+  - base: live                   # Required. Target branch
+    upstream: template           # Required. Must be in the same fork network.
+    mergeMethod: merge           # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
     mergeUnstable: false
 label: ":arrow_heading_down: pull"
 conflictLabel: "merge-conflict"

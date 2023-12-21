@@ -1,11 +1,11 @@
-title: Welcome to uBlue
+title: Welcome to Makerspace Kinoite
 properties:
   mode: "run-on-change"
 screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to uBlue (Alpha)"
+      title: "Welcome to Makerspace Kinoite (Alpha)"
       icon: "/path/to/icon"
       description: |
         This guided installer will help you get started with your new system.
@@ -43,6 +43,25 @@ screens:
         We have detected that you don't have Flathub's repository on your current user account. We will now add that repository to your account.
       actions:
         - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+  create-makerspace-account:
+    source: yafti.screen.consent
+    values:
+      title: Setup Makerspace account!
+      # condition:
+      #   run: flatpak remotes --columns=name | grep fedora
+      description: |
+        We have detected the Makerspace account is missing.
+      actions:
+        - run: grep -E '^dialout:' /usr/lib/group >> /etc/group
+        - run: grep -E '^users:' /usr/lib/group >> /etc/group
+        - run: groupadd -r nopasswdlogin
+        - run: adduser -mG nopasswdlogin,dialout,users -c "Maker Space" makerspace
+        - run: cp /usr/share/plasma/avatars/photos/Pencils.png /var/lib/AccountsService/icons/makerspace
+        - run: echo "[User]" | tee /var/lib/AccountsService/users/makerspace
+        - run: echo "Icon=/var/lib/AccountsService/icons/makerspace" | tee -a /var/lib/AccountsService/users/makerspace
+        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key User makerspace 
+        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key Session plasmax11.desktop 
+        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group General --key DisplayServer x11 
   applications:
     source: yafti.screen.package
     values:
@@ -53,80 +72,54 @@ screens:
         user: false
         system: true
       groups:
-        Core GNOME Apps:
-          description: Core system applications for the GNOME desktop environment.
-          default: true
-          packages:
-            - Calculator: org.gnome.Calculator
-            - Calendar: org.gnome.Calendar
-            - Camera: org.gnome.Snapshot
-            - Characters: org.gnome.Characters
-            - Clocks: org.gnome.clocks
-            - Connections: org.gnome.Connections
-            - Contacts: org.gnome.Contacts
-            - Disk Usage Analyzer: org.gnome.baobab
-            - Document Scanner: org.gnome.SimpleScan
-            - Document Viewer: org.gnome.Evince
-            - Extension Manager: com.mattjakeman.ExtensionManager
-            - Font Viewer: org.gnome.font-viewer
-            - Image Viewer: org.gnome.Loupe
-            - Logs: org.gnome.Logs
-            - Maps: org.gnome.Maps
-            - Photos (Organizer): org.gnome.Photos
-            - Sushi (Nautilus Previewer): org.gnome.NautilusPreviewer
-            - Text Editor: org.gnome.TextEditor
-            - Videos (Player): org.gnome.Totem
-            - Weather: org.gnome.Weather
         System Apps:
           description: System applications for all desktop environments.
           default: true
           packages:
-            - Deja Dup Backups: org.gnome.DejaDup
             - Fedora Media Writer: org.fedoraproject.MediaWriter
-            - Flatseal (Permission Manager): com.github.tchx84.Flatseal
-            - Font Downloader: org.gustavoperedo.FontDownloader
             - Mozilla Firefox: org.mozilla.firefox
-        Web Browsers:
-          description: Additional browsers to complement or replace Firefox.
-          default: false
-          packages:
-            - Brave: com.brave.Browser
-            - GNOME Web: org.gnome.Epiphany
-            - Google Chrome: com.google.Chrome
-            - Microsoft Edge: com.microsoft.Edge
-            - Opera: com.opera.Opera
-        Gaming:
-          description: "Rock and Stone!"
-          default: false
-          packages:
-            - Bottles: com.usebottles.bottles
-            - Discord: com.discordapp.Discord
-            - Heroic Games Launcher: com.heroicgameslauncher.hgl
-            - Steam: com.valvesoftware.Steam
-            - Gamescope (Utility): org.freedesktop.Platform.VulkanLayer.gamescope
-            - MangoHUD (Utility): org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
-            - SteamTinkerLaunch (Utility): com.valvesoftware.Steam.Utility.steamtinkerlaunch
-            - Proton Updater for Steam: net.davidotek.pupgui2
-        Office:
-          description: Boost your productivity.
-          default: false
+            - Breeze Theme: org.gtk.Gtk3theme.Breeze
+            - Gwenview: org.kde.gwenview
+            - Okular: org.kde.okular
+            - VLC: org.videolan.VLC
+            - Wine: org.winehq.wine
+        Office Apps:
+          description: Office applications.
+          default: true
           packages:
             - LibreOffice: org.libreoffice.LibreOffice
-            - OnlyOffice: org.onlyoffice.desktopeditors
-            - Obsidian: md.obsidian.Obsidian
-            - Slack: com.slack.Slack
-            - Standard Notes: org.standardnotes.standardnotes
-            - Thunderbird Email: org.mozilla.Thunderbird
-        Streaming:
-          description: Stream to the Internet.
-          default: false
+        CAD/CAM Apps:
+          description: Makerspace applications.
+          default: true
           packages:
-            - OBS Studio: com.obsproject.Studio
-            - VkCapture for OBS: com.obsproject.Studio.OBSVkCapture
-            - Gstreamer for OBS: com.obsproject.Studio.Plugin.Gstreamer
-            - Gstreamer VAAPI for OBS: com.obsproject.Studio.Plugin.GStreamerVaapi
-            - Boatswain for Streamdeck: com.feaneron.Boatswain
-
+            - Inkscape: org.inkscape.Inkscape
+            - Blender: org.blender.Blender
+            - FreeCAD: org.freecadweb.FreeCAD
+            - LibreCAD: org.librecad.librecad
+            - OpenSCAD: org.openscad.OpenSCAD
+            - PrusaSlicer: com.prusa3d.PrusaSlicer
+        Developer Apps:
+          description: Software Development applications.
+          default: true
+          packages:
+            - VSCodium: com.vscodium.codium
+            - Arduino2: cc.arduino.IDE2
+            - RPi Imager: org.raspberrypi.rpi-imager
+  set-flatpak-defaults:
+    source: yafti.screen.consent
+    values:
+      title: Setup flatpak defaults!
+      # condition:
+      #   run: flatpak remotes --columns=name | grep fedora
+      description: |
+        Set Flatpak defaults.
+      actions:
+        - run: flatpak override --env=PRUSA_SLICER_DARK_THEME=true com.prusa3d.PrusaSlicer
+        - run: flatpak override --env=GTK_THEME=Adwaita:dark
+        #- run: 
+        #- run: 
+        #- run: 
+        #- run: 
   final-screen:
     source: yafti.screen.title
     values:
@@ -134,10 +127,10 @@ screens:
       icon: "/path/to/icon"
       links:
         - "Install More Applications":
-            run: /usr/bin/gnome-software
+            run: /usr/bin/plasma-discover
         - "Website":
-            run: /usr/bin/xdg-open https://ublue.it
+            run: /usr/bin/xdg-open https://Makerspace Kinoite.it
         - "Join the Discord Community":
             run: /usr/bin/xdg-open https://discord.gg/XjG48C7VHx
       description: |
-        Thanks for trying uBlue, we hope you enjoy it!
+        Thanks for trying Makerspace Kinoite, we hope you enjoy it!

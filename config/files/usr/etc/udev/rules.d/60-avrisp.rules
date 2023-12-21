@@ -1,0 +1,47 @@
+# BEGIN AVRISP SERVICE
+#----------------------------------------------------------
+# AVRJTAG-MKII, AVRISP-MKII, AVRDRAGON USB mount rules
+#----------------------------------------------------------
+#
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="avrisp_end"
+#
+# Atmel Corp. JTAGICE-MKII
+ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2103", MODE:="0666"
+#
+# Atmel Corp. AVRISP-MKII
+ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2104", MODE:="0666"
+#
+# Atmel Corp. AVR Dragon
+ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2107", MODE:="0666"
+#
+LABEL="avrisp_end"
+#
+# END AVRISP SERVER
+
+#--------------------------------------------------------------------------
+
+# CH341 USB-TTL USB mount rules
+
+#--------------------------------------------------------------------------
+
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="ch341_end"
+
+# CH341 USB-TTL converter
+
+ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE:="0666"
+LABEL="ch341_end"
+
+#--------------------------------------------------------------------------
+
+# FTDI232RL USB-TTL USB mount rules
+
+#--------------------------------------------------------------------------
+
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="FTDI232RL_end"
+
+# FTDI232RL USB-TTL converter
+
+
+ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE:="0666"
+
+LABEL="FTDI2332RL_end"

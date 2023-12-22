@@ -37,7 +37,7 @@ modules:
         - com.vscodium.codium
         - cc.arduino.IDE2
         - org.raspberrypi.rpi-imager
-        - org.winehq.wine
+        - org.winehq.Wine
         - org.videolan.VLC
         - org.kde.okular
         - org.kde.gwenview

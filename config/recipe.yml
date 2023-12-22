@@ -21,6 +21,7 @@ modules:
                   # config directory on ostree. Read more in the files module's README
 
   - type: default-flatpaks
+    notify: true   # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -42,8 +43,6 @@ modules:
         - org.kde.gwenview
         - org.mozilla.firefox
         - org.fedoraproject.MediaWriter
-      # remove:
-      #   - org.gnome.eog
     # A flatpak repo can also be added without having to install flatpaks,
     # as long as one of the repo- fields is present
     user:

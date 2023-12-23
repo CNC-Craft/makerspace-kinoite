@@ -43,25 +43,25 @@ screens:
         We have detected that you don't have Flathub's repository on your current user account. We will now add that repository to your account.
       actions:
         - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-  create-makerspace-account:
-    source: yafti.screen.consent
-    values:
-      title: Setup Makerspace account!
-      # condition:
-      #   run: flatpak remotes --columns=name | grep fedora
-      description: |
-        We have detected the Makerspace account is missing.
-      actions:
-        - run: grep -E '^dialout:' /usr/lib/group >> /etc/group
-        - run: grep -E '^users:' /usr/lib/group >> /etc/group
-        - run: groupadd -r nopasswdlogin
-        - run: adduser -mG nopasswdlogin,dialout,users -c "Maker Space" makerspace
-        - run: cp /usr/share/plasma/avatars/photos/Pencils.png /var/lib/AccountsService/icons/makerspace
-        - run: echo "[User]" | tee /var/lib/AccountsService/users/makerspace
-        - run: echo "Icon=/var/lib/AccountsService/icons/makerspace" | tee -a /var/lib/AccountsService/users/makerspace
-        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key User makerspace 
-        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key Session plasmax11.desktop 
-        - run: kwriteconfig5 --file /usr/etc/sddm.conf --group General --key DisplayServer x11 
+  # create-makerspace-account:
+  #   source: yafti.screen.consent
+  #   values:
+  #     title: Setup Makerspace account!
+  #     # condition:
+  #     #   run: flatpak remotes --columns=name | grep fedora
+  #     description: |
+  #       We have detected the Makerspace account is missing.
+  #     actions:
+  #       - run: grep -E '^dialout:' /usr/lib/group >> /etc/group
+  #       - run: grep -E '^users:' /usr/lib/group >> /etc/group
+  #       - run: groupadd -r nopasswdlogin
+  #       - run: adduser -mG nopasswdlogin,dialout,users -c "Maker Space" makerspace
+  #       - run: cp /usr/share/plasma/avatars/photos/Pencils.png /var/lib/AccountsService/icons/makerspace
+  #       - run: echo "[User]" | tee /var/lib/AccountsService/users/makerspace
+  #       - run: echo "Icon=/var/lib/AccountsService/icons/makerspace" | tee -a /var/lib/AccountsService/users/makerspace
+  #       - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key User makerspace 
+  #       - run: kwriteconfig5 --file /usr/etc/sddm.conf --group Autologin --key Session plasmax11.desktop 
+  #       - run: kwriteconfig5 --file /usr/etc/sddm.conf --group General --key DisplayServer x11 
   applications:
     source: yafti.screen.package
     values:
@@ -72,54 +72,20 @@ screens:
         user: false
         system: true
       groups:
-        System Apps:
-          description: System applications for all desktop environments.
-          default: true
-          packages:
-            - Fedora Media Writer: org.fedoraproject.MediaWriter
-            - Mozilla Firefox: org.mozilla.firefox
-            - Breeze Theme: org.gtk.Gtk3theme.Breeze
-            - Gwenview: org.kde.gwenview
-            - Okular: org.kde.okular
-            - VLC: org.videolan.VLC
-            - Wine: org.winehq.wine
         Office Apps:
           description: Office applications.
           default: true
           packages:
             - LibreOffice: org.libreoffice.LibreOffice
-        CAD/CAM Apps:
-          description: Makerspace applications.
-          default: true
-          packages:
-            - Inkscape: org.inkscape.Inkscape
-            - Blender: org.blender.Blender
-            - FreeCAD: org.freecadweb.FreeCAD
-            - LibreCAD: org.librecad.librecad
-            - OpenSCAD: org.openscad.OpenSCAD
-            - PrusaSlicer: com.prusa3d.PrusaSlicer
-        Developer Apps:
-          description: Software Development applications.
-          default: true
-          packages:
-            - VSCodium: com.vscodium.codium
-            - Arduino2: cc.arduino.IDE2
-            - RPi Imager: org.raspberrypi.rpi-imager
   set-flatpak-defaults:
     source: yafti.screen.consent
     values:
       title: Setup flatpak defaults!
-      # condition:
-      #   run: flatpak remotes --columns=name | grep fedora
       description: |
         Set Flatpak defaults.
       actions:
         - run: flatpak override --env=PRUSA_SLICER_DARK_THEME=true com.prusa3d.PrusaSlicer
         - run: flatpak override --env=GTK_THEME=Adwaita:dark
-        #- run: 
-        #- run: 
-        #- run: 
-        #- run: 
   final-screen:
     source: yafti.screen.title
     values:
@@ -129,7 +95,7 @@ screens:
         - "Install More Applications":
             run: /usr/bin/plasma-discover
         - "Website":
-            run: /usr/bin/xdg-open https://Makerspace Kinoite.it
+            run: /usr/bin/xdg-open https://cnccraft.co.uk/
         - "Join the Discord Community":
             run: /usr/bin/xdg-open https://discord.gg/XjG48C7VHx
       description: |

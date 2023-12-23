@@ -43,6 +43,7 @@ modules:
         - org.kde.gwenview
         - org.mozilla.firefox
         - org.fedoraproject.MediaWriter
+        - org.gtk.Gtk3theme.Breeze
     # A flatpak repo can also be added without having to install flatpaks,
     # as long as one of the repo- fields is present
     user:

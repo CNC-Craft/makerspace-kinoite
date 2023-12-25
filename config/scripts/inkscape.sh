@@ -11,6 +11,7 @@ mkdir -p /usr/share/inkscape/git
 mkdir -p /usr/share/inkscape/extensions
 git clone https://github.com/alextrical/mightyscape-1.2.git /usr/share/inkscape/git/mightyscape-1.2
 mv /usr/share/inkscape/git/mightyscape-1.2/extensions/mightyscape /usr/share/inkscape/extensions/mightyscape
+chown -R root:users /usr/share/inkscape/extensions/mightyscape
 rm -rf /usr/share/inkscape/git
 
 # # This script grabs the latest inkstitch release
@@ -31,3 +32,4 @@ curl -s https://api.github.com/repos/inkstitch/inkstitch/releases/latest \
 | xargs wget -qO - \
 | xz -d \
 | tar -xf - -C /usr/share/inkscape/extensions/
+chown -R root:users /usr/share/inkscape/extensions/inkstitch

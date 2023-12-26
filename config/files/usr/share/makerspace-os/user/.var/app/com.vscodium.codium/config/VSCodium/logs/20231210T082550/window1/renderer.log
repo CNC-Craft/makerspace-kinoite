@@ -1,0 +1,5 @@
+2023-12-10 08:25:51.673 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'ms-dotnettools.dotnet-interactive-vscode' wants API proposal 'languageConfigurationAutoClosingPairs' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2023-12-10 08:25:51.738 [info] Initial editor state {"filesToOpenOrCreate":[{"fileUri":{"$mid":1,"path":"/app/share/ide-flatpak-wrapper/README.md","scheme":"file"},"type":1,"exists":true,"options":{}}],"filesToDiff":[],"filesToMerge":[]}
+2023-12-10 08:25:52.653 [info] Started initializing default profile extensions in extensions installation folder. file:///home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions
+2023-12-10 08:25:53.299 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions
+2023-12-10 08:25:56.149 [info] [perf] Render performance baseline is 36ms

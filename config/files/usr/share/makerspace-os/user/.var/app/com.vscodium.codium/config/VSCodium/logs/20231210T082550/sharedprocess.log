@@ -1,0 +1,25 @@
+2023-12-10 08:25:52.851 [info] Started initializing default profile extensions in extensions installation folder. file:///home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions
+2023-12-10 08:25:53.431 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions
+2023-12-10 08:25:53.550 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp'
+    at r.create (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35849)
+    at a (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35983)
+    at s.toFileSystemProviderError (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:47852)
+    at s.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:38447)
+    at async C.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:20932)
+    at async Y.onDidFilesChange (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:109:12681)
+2023-12-10 08:41:29.296 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp'
+    at r.create (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35849)
+    at a (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35983)
+    at s.toFileSystemProviderError (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:47852)
+    at s.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:38447)
+    at async C.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:20932)
+    at async Y.onDidFilesChange (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:109:12681)
+2023-12-10 08:41:29.309 [info] Extensions added from another source ms-vscode.cpptools vscode-userdata:/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json
+2023-12-10 08:45:05.650 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json.vsctmp'
+    at r.create (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35849)
+    at a (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:51:35983)
+    at s.toFileSystemProviderError (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:47852)
+    at s.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:38447)
+    at async C.stat (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:56:20932)
+    at async Y.onDidFilesChange (/app/share/codium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:109:12681)
+2023-12-10 08:45:05.661 [info] Extensions added from another source platformio.platformio-ide vscode-userdata:/home/alextrical/.var/app/com.vscodium.codium/data/codium/extensions/extensions.json
